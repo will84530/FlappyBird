@@ -56,11 +56,11 @@ function calcRandomHole()
 end
 
 function setupSounds()
-  	crashSound = audio.loadSound("Sounds/sfx_die.mp3")
-	wingSound = audio.loadSound("Sounds/sfx_wing.mp3")
-	swooshSound = audio.loadSound("Sounds/sfx_swooshing.mp3")
-	pointSound = audio.loadSound("Sounds/sfx_point.mp3")
-	hitSound = audio.loadSound("Sounds/sfx_hit.mp3")
+  	crashSound = audio.loadSound("Sounds/sfx_die.m4a")
+	wingSound = audio.loadSound("Sounds/sfx_wing.m4a")
+	swooshSound = audio.loadSound("Sounds/sfx_swooshing.m4a")
+	pointSound = audio.loadSound("Sounds/sfx_point.m4a")
+	hitSound = audio.loadSound("Sounds/sfx_hit.m4a")
 end
 
 function setupBackground()
