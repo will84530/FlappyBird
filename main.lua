@@ -77,20 +77,20 @@ end
 
 function setupParticle()
 	local params = {
-          textureFileName = "Assets/habra.png",
-          startParticleSize = 30,
-		  startParticleSizeVariance = 15,
-          startColorAlpha = 0.1,
-          finishColorAlpha = 0.75,
-          startColorGreen = 1,
-          startColorRed = 1,
-          blendFuncSource = 770,
-          blendFuncDestination = 1,
-          particleLifespan = 0.7237,
-          maxParticles = 128,
-          duration = 0.5,
-          speedVariance = 260,
-          angleVariance = -300,
+		textureFileName = "Assets/habra.png",
+		startParticleSize = 30,
+		startParticleSizeVariance = 15,
+		startColorAlpha = 0.1,
+		finishColorAlpha = 0.75,
+		startColorGreen = 1,
+		startColorRed = 1,
+		blendFuncSource = 770,
+		blendFuncDestination = 1,
+		particleLifespan = 0.7237,
+		maxParticles = 128,
+		duration = 0.5,
+		speedVariance = 260,
+		angleVariance = -300,
 	}
 	explosion = display.newEmitter(params)
 	explosion:stop()
@@ -223,13 +223,17 @@ function handleBestScore(command)
 	local path = system.pathForFile("bestscore.txt", system.DocumentsDirectory)
 	local access = (command == "save" and "w") or (command == "load" and "r")
 	local file, errorStr = io.open(path, access)
-	if file then
+	if not errorStr then
 		if command == "save" then file:write(bestScore)			
 		elseif command == "load" then bestScore = tonumber(file:read("*a")) or 0
 		else print("ERROR: A wrong command in handleBestScore function.") end
 		io.close(file)
 	else
-		print("ERROR: " .. errorStr)
+		if not file then
+			print("WARNING: DIDN'T FIND BEST SCORE DATA.")
+		else
+			print("ERROR: " .. errorStr)
+		end
 	end
 	file = nil
 end
